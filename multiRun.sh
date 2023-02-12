@@ -10,6 +10,8 @@ do
     esac
 done
 
+# https://oshiete.goo.ne.jp/qa/5462565.html
+# exit→処理終了　/ 数字は終了ステータス 0正常、１警告、２エラー
 re='^[0-9]+$'
 if ! [[ $number =~ $re ]] || [[ $number == 0 ]]; then
     echo "The flag value for -x should be present and a whole number greater than 0."
