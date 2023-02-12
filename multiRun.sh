@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# https://atmarkit.itmedia.co.jp/ait/articles/2002/13/news025.html
 while getopts n:x:f: flag
 do
     case "${flag}" in
