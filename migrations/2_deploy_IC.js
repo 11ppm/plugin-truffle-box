@@ -52,9 +52,11 @@ async function getStuff() {
 }
 
 async function checkState() {
-    const check = db.prepare(`SELECT symbol FROM ${tableNew} WHERE ${tsyms} IS 0`);
+    const check = db.prepare(`SELECT id FROM ${tableNew} WHERE ${tsyms} IS 0`);
+    // const check = db.prepare(`SELECT symbol FROM ${tableNew} WHERE ${tsyms} IS 0`);
     let result = check.get(); // get the first crypto symbol that has 0 in this column  (hasn't had an IC created yet)
-    fsyms = result.symbol;
+    fsyms = result.id;
+    // fsyms = result.symbol;
 
     console.log("\n");
     console.log(`The fsyms for this IC will be: ${chalk.green(fsyms)}`);
@@ -71,12 +73,14 @@ async function updateDBforIC() {
 }
 
 async function flipState() {
-    const flip = db.prepare(`UPDATE ${tableNew} SET ${tsyms} = 1 WHERE symbol = '${fsyms}'`);
+    const flip = db.prepare(`UPDATE ${tableNew} SET ${tsyms} = 1 WHERE id = '${fsyms}'`);
+    // const flip = db.prepare(`UPDATE ${tableNew} SET ${tsyms} = 1 WHERE symbol = '${fsyms}'`);
     flip.run();
     console.log("\n");
     console.log(`The IC for the ${chalk.green(fsyms)}-${chalk.green(tsyms)} pair with oracle: ${chalk.green(oracle)} and jobId: ${chalk.green(jobId)} are now marked done in ${chalk.green(tableNew)}`)
 
-    const checkWork = db.prepare(`SELECT * FROM ${tableNew} WHERE symbol = '${fsyms}'`);
+    const checkWork = db.prepare(`SELECT * FROM ${tableNew} WHERE id = '${fsyms}'`);
+    // const checkWork = db.prepare(`SELECT * FROM ${tableNew} WHERE symbol = '${fsyms}'`);
     let result = checkWork.all();
     console.log(result)
 }
