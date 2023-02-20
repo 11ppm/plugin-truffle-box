@@ -25,7 +25,7 @@ If doing apothem testing, you will need to get XDC and PLI from the apothem fauc
 
 - For testing, an apothem node is highly recommended.  Use my repo on the apothem branch to quickly set up an apothem node:
 ```
-https://github.com/go140point6/plugin-deployment/tree/apothem
+https://github.com/11ppm/plugin-deployment/tree/apothem
 ```
 - In either case, this will create jobs on whatever node it is run on as currently it only creates jobs against localhost.
 - Be sure to install and run the latest external-adapter-feeds repo from the official GoPlugin github, and create the bridges you want to use as documented there.
