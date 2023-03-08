@@ -13,3 +13,4 @@ plinode_job_data-feeds.json
 tsyms
 datafeed
 build/
+.DS_Store
